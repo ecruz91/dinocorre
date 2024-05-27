@@ -8,8 +8,9 @@ func _ready():
 	screen_size = get_window().size
 	PlayerInitialPosition = $Player.position
 
+func new_game():
+	$Floor.position.x = 0
+	$Player.position = PlayerInitialPosition
 
 func _process(delta):
-	if ($Player.position.x - $Floor.position.x) > screen_size.x:
-		$Floor.position.x = $Floor.position.x + screen_size.x
-		$Floor.position.x += screen_size.x
+	$Floor.position.x = $Player.position.x - 150
