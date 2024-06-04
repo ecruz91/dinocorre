@@ -2,10 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d1m8coeqiwm7" path="res://icon.svg" id="1_77d4x"]
 [ext_resource type="Script" path="res://mob/mob.gd" id="1_iay18"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyuj8"]
-radius = 61.0
-height = 128.0
+[ext_resource type="Texture2D" uid="uid://2olbi3obuq7w" path="res://mob/genio.png" id="3_d00ci"]
 
 [node name="MOB" type="Area2D"]
 script = ExtResource("1_iay18")
@@ -14,12 +11,25 @@ script = ExtResource("1_iay18")
 position = Vector2(-10, -9)
 
 [node name="SpriteA" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-64, -64)
 texture = ExtResource("1_77d4x")
 
-[node name="CollisionA" type="CollisionShape2D" parent="."]
-position = Vector2(-64, -65)
-shape = SubResource("CapsuleShape2D_jyuj8")
+[node name="CollisionA" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(-64, -64)
+polygon = PackedVector2Array(64, -61.1, 64, 59, 59.6, 64, -60.2, 64, -64, 61, -64, 58, -64, -59, -59, -63.8, 59.2, -64)
+disabled = true
+
+[node name="Genie" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-28, -125)
+texture = ExtResource("3_d00ci")
+
+[node name="GenieCol" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(-28, -127)
+polygon = PackedVector2Array(5.5, -46.4, 5.5, -44, 8.7, -37.5, 13.3, -37.5, 20, -30.8, 22, -32.9, 24.5, -31.8, 24.5, -30.3, 30.5, -24.3, 30.5, -18.6, 27.5, -15, 27.5, -6.3, 30.5, -3.3, 30.5, 32.5, 7.6, 51.5, -5.5, 51.5, -30.5, 16.5, -30.5, 3.5, -10.5, -13.4, -10.5, -15, -15.5, -27.5, -11.8, -27.5, -6.5, -28.3, -6.5, -29.3, -0.5, -35.3, -10.5, -40.3, -10.5, -41.7, -17.5, -48.7, -17.5, -51.5, -0.5, -51.5)
 disabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
